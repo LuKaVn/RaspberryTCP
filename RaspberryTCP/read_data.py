@@ -192,5 +192,5 @@ def Alarm_thermal():
         blynk.notify('Humidity high alarm CLEAR!')
         var_alarm_up = True
 
-
+#not commit
         #var_alarm_up = True 123
