@@ -189,7 +189,7 @@ while True:
 #        time.sleep(5)
     
     if flag_read_Current == True:
-        data=Connect_MbTCP("192.168.1.151",3,1,14)
+        data=Connect_MbTCP("192.168.1.151",3,1,15)
         if len(data)>1:
             list_Buffer.append(data)
             count=count+1;
