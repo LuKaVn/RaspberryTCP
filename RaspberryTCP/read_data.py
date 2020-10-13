@@ -120,17 +120,23 @@ def read_virtual_pin_handler(pin) :
 
 @blynk.handle_event('read V10')
 def read_virtual_pin_handler(pin) :
-    blynk.virtual_write(pin, SCB010)
+    blynk.virtual_write(pin, SCB10)
 @blynk.handle_event('read V11')
 def read_virtual_pin_handler(pin) :
-    blynk.virtual_write(pin, SCB011)
+    blynk.virtual_write(pin, SCB11)
 
 @blynk.handle_event('read V12')
 def read_virtual_pin_handler(pin) :
     blynk.virtual_write(pin, SCB12)
 @blynk.handle_event('read V13')
 def read_virtual_pin_handler(pin) :
-    blynk.virtual_write(pin, SCB013)
+    blynk.virtual_write(pin, SCB13)
+@blynk.handle_event('read V14')
+def read_virtual_pin_handler(pin) :
+    blynk.virtual_write(pin, SCB14)
+@blynk.handle_event('read V15')
+def read_virtual_pin_handler(pin) :
+    blynk.virtual_write(pin, SCB15)
 
 
 
@@ -142,7 +148,7 @@ def read_weather():
     return data
 
 def Alarm(value_Alarm):
-    
+    '''
     if value_Alarm == True and keep_Alarm==False:
         blynk.notify(alarm_msg)
         blynk.email("cuonglbq@geccom.vn", alarm_msg , "https://shorturl.at/hDTY2")
@@ -151,12 +157,17 @@ def Alarm(value_Alarm):
     if value_Alarm == False:
         blynk.notify('Alarm CLEAR!')
         keep_Alarm=False
-    
+ 
+ '''
+def convert_float_int(value_float):
+           value_int=int(value_floar*100)/100
+           return value_int
+
 while True:
     blynk.run()
     if flag_read_Weather == True:
         data_Weather=read_weather()
-        W0=data_Weather
+        W0=data_Weather[0]/10
         if(data_Weather[0]>4000):
             flag_read_Current = True
             flag_read_Weather=False
@@ -193,9 +204,23 @@ while True:
                 
                 list_Buffer_Final.append(max(list_Buffer_Start))
                 list_Buffer_Start=[]
-           
+                      
             list_Buffer=[]
-            
+            SCB01=convert_float_int(list_Buffer_Final[0])
+            SCB02=convert_float_int(list_Buffer_Final[1])         
+            SCB03=convert_float_int(list_Buffer_Final[2])
+            SCB04=convert_float_int(list_Buffer_Final[3])
+            SCB05=convert_float_int(list_Buffer_Final[4])
+            SCB06=convert_float_int(list_Buffer_Final[5])
+            SCB07=convert_float_int(list_Buffer_Final[6])
+            SCB08=convert_float_int(list_Buffer_Final[7])
+            SCB09=convert_float_int(list_Buffer_Final[8])
+            SCB10=convert_float_int(list_Buffer_Final[9])
+            SCB11=convert_float_int(list_Buffer_Final[10])
+            SCB12=convert_float_int(list_Buffer_Final[11])
+            SCB13=convert_float_int(list_Buffer_Final[12])
+            SCB14=convert_float_int(list_Buffer_Final[13])
+            SCB15=convert_float_int(list_Buffer_Final[14])
             for u in range(len(list_Buffer_Final)):
                 d=list_Buffer_Final[u]/list_String_IVT1[u]
                 list_Data_F.append(d)
