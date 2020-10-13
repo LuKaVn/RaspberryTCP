@@ -160,7 +160,7 @@ def Alarm(value_Alarm):
  
  '''
 def convert_float_int(value_float):
-           value_int=int(value_floar*100)/100
+           value_int=int(value_float*100)/100
            return value_int
 
 while True:
