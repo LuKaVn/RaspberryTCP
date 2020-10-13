@@ -28,6 +28,7 @@ flag_read_Weather=False
 data_Weather=0
 keep_Alarm=False
 var_alarm_up = False #initilize value
+
 """
 ip_Device=["192.168.1.151","192.168.1.152","192.168.1.153","192.168.1.154","192.168.1.155","192.168.1.156",
            "192.168.1.157","192.168.1.158","192.168.1.159","192.168.1.160","192.168.1.161","192.168.1.162",
@@ -86,14 +87,51 @@ def find_MaxMin(data):
 BLYNK_AUTH = 'ER7orEIO8KJD9D0AsoP6apQ2DztWBc8x'
 blynk = blynklib.Blynk(BLYNK_AUTH)
 
+@blynk.handle_event('read V0')
+def read_virtual_pin_handler(pin) :
+    blynk.virtual_write(pin, W0)
 @blynk.handle_event('read V1')
 def read_virtual_pin_handler(pin) :
-    blynk.virtual_write(pin, var_temp)
-
-
+    blynk.virtual_write(pin, SCB01)
 @blynk.handle_event('read V2')
 def read_virtual_pin_handler(pin) :
-    blynk.virtual_write(pin, var_RH)
+    blynk.virtual_write(pin, SCB02)
+@blynk.handle_event('read V3')
+def read_virtual_pin_handler(pin) :
+    blynk.virtual_write(pin, SCB03)
+@blynk.handle_event('read V4')
+def read_virtual_pin_handler(pin) :
+    blynk.virtual_write(pin, SCB04)
+@blynk.handle_event('read V5')
+def read_virtual_pin_handler(pin) :
+    blynk.virtual_write(pin, SCB05)
+@blynk.handle_event('read V6')
+def read_virtual_pin_handler(pin) :
+    blynk.virtual_write(pin, SCB06)
+@blynk.handle_event('read V7')
+def read_virtual_pin_handler(pin) :
+    blynk.virtual_write(pin, SCB07)
+@blynk.handle_event('read V8')
+def read_virtual_pin_handler(pin) :
+    blynk.virtual_write(pin, SCB08)
+@blynk.handle_event('read V9')
+def read_virtual_pin_handler(pin) :
+    blynk.virtual_write(pin, SCB09)
+
+@blynk.handle_event('read V10')
+def read_virtual_pin_handler(pin) :
+    blynk.virtual_write(pin, SCB010)
+@blynk.handle_event('read V11')
+def read_virtual_pin_handler(pin) :
+    blynk.virtual_write(pin, SCB011)
+
+@blynk.handle_event('read V12')
+def read_virtual_pin_handler(pin) :
+    blynk.virtual_write(pin, SCB12)
+@blynk.handle_event('read V13')
+def read_virtual_pin_handler(pin) :
+    blynk.virtual_write(pin, SCB013)
+
 
 
 ###########################################################
@@ -118,6 +156,7 @@ while True:
     blynk.run()
     if flag_read_Weather == True:
         data_Weather=read_weather()
+        W0=data_Weather
         if(data_Weather[0]>4000):
             flag_read_Current = True
             flag_read_Weather=False
