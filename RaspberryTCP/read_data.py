@@ -78,7 +78,8 @@ def find_MaxMin(data):
 
 
 #Blynk set up
-BLYNK_AUTH = 'yJrIM13raUXVjmYPoGxIyd2LYdOSs0w3'
+#BLYNK_AUTH = 'yJrIM13raUXVjmYPoGxIyd2LYdOSs0w3'
+BLYNK_AUTH = 'ER7orEIO8KJD9D0AsoP6apQ2DztWBc8x'
 blynk = blynklib.Blynk(BLYNK_AUTH)
 
 @blynk.handle_event('read V1')
