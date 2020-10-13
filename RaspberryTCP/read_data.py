@@ -79,7 +79,8 @@ def find_MaxMin(data):
 
 
 #Blynk set up
-BLYNK_AUTH = 'yJrIM13raUXVjmYPoGxIyd2LYdOSs0w3'
+#BLYNK_AUTH = 'yJrIM13raUXVjmYPoGxIyd2LYdOSs0w3'
+BLYNK_AUTH = 'ER7orEIO8KJD9D0AsoP6apQ2DztWBc8x'
 blynk = blynklib.Blynk(BLYNK_AUTH)
 
 @blynk.handle_event('read V1')
@@ -102,16 +103,14 @@ def read_weather():
 def Alarm(value_Alarm):
     
     if value_Alarm == True and keep_Alarm==False:
-        blynk.notify('Alarm SET!')
-        blynk.email("cuonglbq@geccom.vn", "Sensor Temperature & Humidity", "https://drive.google.com/file/d/1SzKMVdSz59slXK4rYwqK5kk_zL_PKdxi/view?usp=sharing");
+        blynk.notify(alarm_msg)
+        blynk.email("cuonglbq@geccom.vn", alarm_msg , "https://shorturl.at/hDTY2")
         value_Alarm = False
         keep_Alarm=True
     if value_Alarm == False:
         blynk.notify('Alarm CLEAR!')
         keep_Alarm=False
     
-
-
 while True:
     blynk.run()
     if flag_read_Weather == True:
@@ -167,6 +166,9 @@ while True:
                 if y<max_data-var_Compare:
                     b=list_Data_F.index(y)+1
                     print("Low Current at SCB No:  " + str(b))
+                    
+                    alarm_msg =   "Low Current at SCB No:  " + str(b)
+                      
                     var_alarm_up == True
                     Alarm(var_alarm_up)
                                  
@@ -192,5 +194,4 @@ def Alarm_thermal():
         var_alarm_up = True
 
 
-        #var_alarm_up = True
 
