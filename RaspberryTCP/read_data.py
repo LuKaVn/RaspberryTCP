@@ -1,5 +1,5 @@
 
-#check GIT
+#check GIT/ this is check data
 # truong dinhluu
 #check again
 #check from
@@ -29,10 +29,17 @@ data_Weather=0
 keep_Alarm=False
 var_alarm_up = False #initilize value
 list_Alarm=[]
+lsit_Count_Alarm=[]
 count_Alarm=0
-
+Var_Flag_Add=0
+Var_Flag_Clear=0
 list_SCB=["SCB01","SCB02","SCB03","SCB04","SCB05","SCB06","SCB07","SCB08","SCB09","SCB010","SCB011","SCB012","SCB013","SCB014","SCB015","SCB016"]
-list_Write=[]
+# Flag -------->
+list_Error_Flag=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]# No 17 is Count error
+list_FinalError_Flag=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]# No 17 is Count error
+list_Alarm_Write=[]
+list_Alarm_Write=[]
+list_Alarm_Save=[]
 count_Alarm=0
 
 """
@@ -92,7 +99,7 @@ def find_MaxMin(data):
 BLYNK_AUTH = 'ER7orEIO8KJD9D0AsoP6apQ2DztWBc8x'
 blynk = blynklib.Blynk(BLYNK_AUTH)
 
-@blynk.handle_event('read V0')ß
+@blynk.handle_event('read V0')
 def read_virtual_pin_handler(pin) :
     blynk.virtual_write(pin, W0)
 @blynk.handle_event('read V1')
@@ -154,18 +161,41 @@ def read_weather():
 #def find_Alarm(var_find):
 
 def get_list_Alarm(list_data_alarm):
+    list_Alarm_Write=[]
     count_Alarm_sub=0
     for i in range(len(list_SCB)):
         for y in range(len(list_data_alarm)):
             if list_SCB[i]==list_data_alarm[y]:
                 count_Alarm_sub=count_Alarm_sub+1
         if count_Alarm_sub >0:
-            list_Write.append(list_SCB[i])
+            list_Alarm_Write.append(list_SCB[i])
+            list_Count_Alarm.append(count_Alarm_sub)
             count_Alarm_sub=0     
-    print(list_Write)
-    list_Write=[]
+    # tim so luong gia tri >80%
+    for i in range(len(list_Count_Alarm)):
+        if list_Count_Alarm[i]>15:
+            print("Low Current")
+            print(list_Alarm_Write[i])
+        #output value Alarm
+    # so sanh them bot gia tri
+
+    print(list_Alarm_Write)
+    for i in range(len(list_Alarm_Write)):
+        for y in range(len(list_SCB)):
+            if list_Alarm_Write[i]==list_SCB[y]:
+                list_Error_Flag[y]=1
+    print(list_Error_Flag)
+    # flag_Add flag_Error
+    for i in range(len(list_Error_Flag)):
+        if list_Error_Flag[i]>list_FinalError_Flag[i]:
+            Var_Flag_Add=Var_Flag_Add+1
+            print("canh bao loi")
+        if list_Error_Flag[i]<list_FinalError_Flag[i]:
+            Var_Flag_Clear=Var_Flag_Clear-1
+            print("Loi da duoc xoa")
 
 
+    
 
 def Alarm(value_Alarm):
 
@@ -264,7 +294,9 @@ while True:
                     var_alarm_up == False
                     Alarm(var_alarm_up)
             flag_read_Weather=True
-            if count_Alarm==5:
+            
+            if count_Alarm==20:
+                print(list_Alarm)
                 get_list_Alarm(list_Alarm)
                 print("hello")
                 list_Alarm=[]
