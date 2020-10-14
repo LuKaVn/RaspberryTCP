@@ -155,6 +155,7 @@ def read_weather():
 #def find_Alarm(var_find):
 
 def get_list_Alarm(list_data_alarm):
+    list_Write=[]
     count_Alarm_sub=0
     for i in range(len(list_SCB)):
         for y in range(len(list_data_alarm)):
@@ -164,6 +165,7 @@ def get_list_Alarm(list_data_alarm):
             list_Write.append(list_SCB[i])
             count_Alarm_sub=0     
     print(list_Write)
+    
 
 
 
@@ -264,7 +266,9 @@ while True:
                     var_alarm_up == False
                     Alarm(var_alarm_up)
             flag_read_Weather=True
+            
             if count_Alarm==5:
+                print(list_Alarm)
                 get_list_Alarm(list_Alarm)
                 print("hello")
                 list_Alarm=[]
