@@ -1,5 +1,5 @@
 
-#check GIT/ this is check data
+#check GIT/ this is check data /check
 # truong dinhluu
 #check again
 #check from
