@@ -87,12 +87,12 @@ def find_MaxMin(data):
             print("Lost Current at") 
 
 
-#Blynk set up
+#Blynk set up github commit
 #BLYNK_AUTH = 'yJrIM13raUXVjmYPoGxIyd2LYdOSs0w3'
 BLYNK_AUTH = 'ER7orEIO8KJD9D0AsoP6apQ2DztWBc8x'
 blynk = blynklib.Blynk(BLYNK_AUTH)
 
-@blynk.handle_event('read V0')
+@blynk.handle_event('read V0')ß
 def read_virtual_pin_handler(pin) :
     blynk.virtual_write(pin, W0)
 @blynk.handle_event('read V1')
