@@ -152,30 +152,22 @@ def read_virtual_pin_handler(pin) :
 def read_weather():
     data=Connect_MbTCP("192.168.1.111",4,1,1)
     return data
-def find_Alarm(var_find):
-    if var_find = 1:
+#def find_Alarm(var_find):
 
 def get_list_Alarm(list_data_alarm):
-
+    count_Alarm_sub=0
     for i in range(len(list_SCB)):
         for y in range(len(list_data_alarm)):
-        if list_SCB[i]==list_data_alarm[y]:
-            count_Alarm=count_Alarm+1
-    if count_Alarm >0:
-        list_Write.append(list_SCB[i])
-        count_Alarm=0     
+            if list_SCB[i]==list_data_alarm[y]:
+                count_Alarm_sub=count_Alarm_sub+1
+        if count_Alarm_sub >0:
+            list_Write.append(list_SCB[i])
+            count_Alarm_sub=0     
     print(list_Write)
 
 
 
 def Alarm(value_Alarm):
-
-    '''
-    neu loi cho vao mang
-    kiem tra 5 lan.
-    neu loi xuat hien 5 lan
-    canh bao su co SCB
-    '''
 
     '''
     if value_Alarm == True and keep_Alarm==False:
@@ -254,15 +246,15 @@ while True:
                 d=list_Buffer_Final[u]/list_String_IVT1[u]
                 list_Data_F.append(d)
                 d=0
-            print(list_Data_F)
+            #print(list_Data_F)
             max_data=max(list_Data_F)
             var_Compare=(max_data*5)/100
             print(str(var_Compare) + " - " + str(max_data))
+            count_Alarm=count_Alarm+1
             for y in list_Data_F:
-                count_Alarm=count_Alarm+1
                 if y<max_data-var_Compare:
                     b=list_Data_F.index(y)+1
-                    print("Low Current at SCB No:  " + str(b))
+                    #print("Low Current at SCB No:  " + str(b))
                     list_Alarm.append(list_SCB[list_Data_F.index(y)])
                     alarm_msg =   "Low Current at SCB No:  " + str(b)
                     var_alarm_up == True
@@ -272,8 +264,10 @@ while True:
                     var_alarm_up == False
                     Alarm(var_alarm_up)
             flag_read_Weather=True
-            if count_Alarm==100:
+            if count_Alarm==5:
                 get_list_Alarm(list_Alarm)
+                print("hello")
+                list_Alarm=[]
                 count_Alarm=0
         list_Data_F=[] 
         list_Buffer_Final=[]
