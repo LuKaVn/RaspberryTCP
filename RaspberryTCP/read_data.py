@@ -84,8 +84,7 @@ def find_MaxMin(data):
     print(var_Compare)
     for y in data:
         if y<max_data-var_Compare:
-            print("Lost Current at")
-
+            print("Lost Current at") 
 
 
 #Blynk set up
@@ -164,6 +163,7 @@ def get_list_Alarm(list_data_alarm):
             list_Write.append(list_SCB[i])
             count_Alarm_sub=0     
     print(list_Write)
+    list_Write=[]
 
 
 
