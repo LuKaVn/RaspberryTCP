@@ -3,7 +3,7 @@
 #check GIT/ this is check data
 =======
 #check GIT/ this is check data /check
->>>>>>> fit 
+>>>>>>> fit
 # truong dinhluu
 #check again
 #check from
