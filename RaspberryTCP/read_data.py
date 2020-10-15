@@ -1,5 +1,9 @@
 
+<<<<<<< HEAD
 #check GIT/ this is check data
+=======
+#check GIT/ this is check data /check
+>>>>>>> fit 
 # truong dinhluu
 #check again
 #check from
@@ -161,7 +165,11 @@ def read_weather():
 #def find_Alarm(var_find):
 
 def get_list_Alarm(list_data_alarm):
+<<<<<<< HEAD
     list_Alarm_Write=[]
+=======
+    list_Write=[]
+>>>>>>> 6231a56a3571a2185f7f18f97acd78cfd32d057e
     count_Alarm_sub=0
     for i in range(len(list_SCB)):
         for y in range(len(list_data_alarm)):
@@ -171,6 +179,7 @@ def get_list_Alarm(list_data_alarm):
             list_Alarm_Write.append(list_SCB[i])
             list_Count_Alarm.append(count_Alarm_sub)
             count_Alarm_sub=0     
+<<<<<<< HEAD
     # tim so luong gia tri >80%
     for i in range(len(list_Count_Alarm)):
         if list_Count_Alarm[i]>15:
@@ -178,6 +187,10 @@ def get_list_Alarm(list_data_alarm):
             print(list_Alarm_Write[i])
         #output value Alarm
     # so sanh them bot gia tri
+=======
+    print(list_Write)
+    
+>>>>>>> 6231a56a3571a2185f7f18f97acd78cfd32d057e
 
     print(list_Alarm_Write)
     for i in range(len(list_Alarm_Write)):
@@ -295,7 +308,11 @@ while True:
                     Alarm(var_alarm_up)
             flag_read_Weather=True
             
+<<<<<<< HEAD
             if count_Alarm==20:
+=======
+            if count_Alarm==5:
+>>>>>>> 6231a56a3571a2185f7f18f97acd78cfd32d057e
                 print(list_Alarm)
                 get_list_Alarm(list_Alarm)
                 print("hello")
