@@ -43,12 +43,13 @@ Var_Flag_Clear=0
 list_SCB=["SCB01","SCB02","SCB03","SCB04","SCB05","SCB06","SCB07","SCB08","SCB09","SCB010","SCB011","SCB012","SCB013","SCB014","SCB015","SCB016"]
 # Flag -------->
 list_Error_Flag=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]# No 17 is Count error
-list_FinalError_Flag=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]# No 17 is Count error
+var_Index_Error=""
+#list_Error_Flag=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]# No 17 is Count error
 list_Alarm_Write=[]
 list_Alarm_Write=[]
 list_Alarm_Save=[]
 count_Alarm=0
-
+list_Count_Alarm=[]
 """
 ip_Device=["192.168.1.151","192.168.1.152","192.168.1.153","192.168.1.154","192.168.1.155","192.168.1.156",
            "192.168.1.157","192.168.1.158","192.168.1.159","192.168.1.160","192.168.1.161","192.168.1.162",
@@ -170,8 +171,7 @@ def read_weather():
 def get_list_Alarm(list_data_alarm):
 
 
-    list_Write=[]
-    list_Write=[]
+    list_Alarm_Write=[]
     count_Alarm_sub=0
     for i in range(len(list_SCB)):
         for y in range(len(list_data_alarm)):
@@ -179,18 +179,29 @@ def get_list_Alarm(list_data_alarm):
                 count_Alarm_sub=count_Alarm_sub+1
         if count_Alarm_sub >0:
             list_Alarm_Write.append(list_SCB[i])
-            list_Count_Alarm.append(count_Alarm_sub)
+            list_Count_Alarm.append(str(count_Alarm_sub))
             count_Alarm_sub=0     
     # tim so luong gia tri >80%
+    
     for i in range(len(list_Count_Alarm)):
-        if list_Count_Alarm[i]>15:
-            print("Low Current")
-            print(list_Alarm_Write[i])
+        if int(list_Count_Alarm[i])>1:
+            var_Index_Error=list_Alarm_Write[i]
+            for i in range(len(list_SCB)):
+                if var_Index_Error==list_SCB[i]:
+                    list_Error_Flag[i]=1
+                    
+    print(list_Error_Flag)
+                    
+                    
+                    
+        
         #output value Alarm
     # so sanh them bot gia tri
-    print(list_Write)
     
-
+    print(list_Alarm_Write)
+    print(list_Count_Alarm)
+    
+    '''
     print(list_Alarm_Write)
     for i in range(len(list_Alarm_Write)):
         for y in range(len(list_SCB)):
@@ -198,6 +209,8 @@ def get_list_Alarm(list_data_alarm):
                 list_Error_Flag[y]=1
     print(list_Error_Flag)
     # flag_Add flag_Error
+    '''
+    '''
     for i in range(len(list_Error_Flag)):
         if list_Error_Flag[i]>list_FinalError_Flag[i]:
             Var_Flag_Add=Var_Flag_Add+1
@@ -205,7 +218,7 @@ def get_list_Alarm(list_data_alarm):
         if list_Error_Flag[i]<list_FinalError_Flag[i]:
             Var_Flag_Clear=Var_Flag_Clear-1
             print("Loi da duoc xoa")
-
+    '''
 
     
 
@@ -288,7 +301,7 @@ while True:
                 d=list_Buffer_Final[u]/list_String_IVT1[u]
                 list_Data_F.append(d)
                 d=0
-            #print(list_Data_F)
+            print(list_Data_F)
             max_data=max(list_Data_F)
             var_Compare=(max_data*5)/100
             print(str(var_Compare) + " - " + str(max_data))
@@ -296,7 +309,7 @@ while True:
             for y in list_Data_F:
                 if y<max_data-var_Compare:
                     b=list_Data_F.index(y)+1
-                    #print("Low Current at SCB No:  " + str(b))
+                    #print("Low Current at SCB No:  " + str(b))#check ok
                     list_Alarm.append(list_SCB[list_Data_F.index(y)])
                     alarm_msg =   "Low Current at SCB No:  " + str(b)
                     var_alarm_up == True
@@ -307,8 +320,8 @@ while True:
                     Alarm(var_alarm_up)
             flag_read_Weather=True
             
-            if count_Alarm==20:
-                print(list_Alarm)
+            if count_Alarm==2:
+                #print(list_Alarm)
                 get_list_Alarm(list_Alarm)
                 print("hello")
                 list_Alarm=[]
