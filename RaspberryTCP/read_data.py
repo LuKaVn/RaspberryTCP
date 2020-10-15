@@ -1,9 +1,13 @@
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #check GIT/ this is check data
 =======
 #check GIT/ this is check data /check
 >>>>>>> fit
+=======
+#check GIT/ this is check data /check
+>>>>>>> 6231a56a3571a2185f7f18f97acd78cfd32d057e
 # truong dinhluu
 #check again
 #check from
@@ -166,7 +170,11 @@ def read_weather():
 
 def get_list_Alarm(list_data_alarm):
 <<<<<<< HEAD
+<<<<<<< HEAD
     list_Alarm_Write=[]
+=======
+    list_Write=[]
+>>>>>>> 6231a56a3571a2185f7f18f97acd78cfd32d057e
 =======
     list_Write=[]
 >>>>>>> 6231a56a3571a2185f7f18f97acd78cfd32d057e
@@ -190,6 +198,9 @@ def get_list_Alarm(list_data_alarm):
 =======
     print(list_Write)
     
+<<<<<<< HEAD
+>>>>>>> 6231a56a3571a2185f7f18f97acd78cfd32d057e
+=======
 >>>>>>> 6231a56a3571a2185f7f18f97acd78cfd32d057e
 
     print(list_Alarm_Write)
@@ -309,7 +320,11 @@ while True:
             flag_read_Weather=True
             
 <<<<<<< HEAD
+<<<<<<< HEAD
             if count_Alarm==20:
+=======
+            if count_Alarm==5:
+>>>>>>> 6231a56a3571a2185f7f18f97acd78cfd32d057e
 =======
             if count_Alarm==5:
 >>>>>>> 6231a56a3571a2185f7f18f97acd78cfd32d057e
