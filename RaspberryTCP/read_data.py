@@ -1,12 +1,6 @@
-
-
 #check GIT/ this is check data
-
 #check GIT/ this is check data /check
-
-
 #check GIT/ this is check data /check
-
 # truong dinhluu
 #check again
 #check from
@@ -44,8 +38,8 @@ list_SCB=["SCB01","SCB02","SCB03","SCB04","SCB05","SCB06","SCB07","SCB08","SCB09
 # Flag -------->
 list_Error_Flag=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]# No 17 is Count error
 var_Index_Error=""
-#list_Error_Flag=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]# No 17 is Count error
-list_Alarm_Write=[]
+#list_FError_Flag=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]# No 17 is Count error
+list_Alarm_Buffer=[]
 list_Alarm_Write=[]
 list_Alarm_Save=[]
 count_Alarm=0
@@ -73,7 +67,6 @@ def Connect_MbTCP(ip,func,reg_addr,reg_nb):
     #c = ModbusClient()
     c.host(SERVER_HOST)
     c.port(SERVER_PORT)
-
     if not c.is_open():
         if not c.open():
             print("unable to connect to "+SERVER_HOST+":"+str(SERVER_PORT))
@@ -91,8 +84,6 @@ def Connect_MbTCP(ip,func,reg_addr,reg_nb):
             c.close()
         else:
             print("PLS! choose FunctionCod")
-
-
 def find_MaxMin(data):
     max_data=max(data)
     var_Compare=(max_data*10)/100
@@ -100,8 +91,6 @@ def find_MaxMin(data):
     for y in data:
         if y<max_data-var_Compare:
             print("Lost Current at") 
-
-
 #Blynk set up github commit
 #BLYNK_AUTH = 'yJrIM13raUXVjmYPoGxIyd2LYdOSs0w3'
 BLYNK_AUTH = 'ER7orEIO8KJD9D0AsoP6apQ2DztWBc8x'
@@ -137,14 +126,12 @@ def read_virtual_pin_handler(pin) :
 @blynk.handle_event('read V9')
 def read_virtual_pin_handler(pin) :
     blynk.virtual_write(pin, SCB09)
-
 @blynk.handle_event('read V10')
 def read_virtual_pin_handler(pin) :
     blynk.virtual_write(pin, SCB10)
 @blynk.handle_event('read V11')
 def read_virtual_pin_handler(pin) :
     blynk.virtual_write(pin, SCB11)
-
 @blynk.handle_event('read V12')
 def read_virtual_pin_handler(pin) :
     blynk.virtual_write(pin, SCB12)
@@ -157,9 +144,6 @@ def read_virtual_pin_handler(pin) :
 @blynk.handle_event('read V15')
 def read_virtual_pin_handler(pin) :
     blynk.virtual_write(pin, SCB15)
-
-
-
 ###########################################################
 # infinite loop that waits for event
 ###########################################################
@@ -167,40 +151,36 @@ def read_weather():
     data=Connect_MbTCP("192.168.1.111",4,1,1)
     return data
 #def find_Alarm(var_find):
-
 def get_list_Alarm(list_data_alarm):
-
-
-    list_Alarm_Write=[]
+    list_Alarm_Buffer=[]
     count_Alarm_sub=0
+    # khong cho phep them, chi ghi de
     for i in range(len(list_SCB)):
         for y in range(len(list_data_alarm)):
             if list_SCB[i]==list_data_alarm[y]:
                 count_Alarm_sub=count_Alarm_sub+1
         if count_Alarm_sub >0:
-            list_Alarm_Write.append(list_SCB[i])
+            list_Alarm_Buffer.append(list_SCB[i])
             list_Count_Alarm.append(str(count_Alarm_sub))
             count_Alarm_sub=0     
     # tim so luong gia tri >80%
-    
+    list_Alarm_Buffer=[]
+    # STOP HERE
+    '''
     for i in range(len(list_Count_Alarm)):
         if int(list_Count_Alarm[i])>1:
             var_Index_Error=list_Alarm_Write[i]
             for i in range(len(list_SCB)):
                 if var_Index_Error==list_SCB[i]:
                     list_Error_Flag[i]=1
-                    
-    print(list_Error_Flag)
-                    
-                    
-                    
-        
-        #output value Alarm
+    list_Count_Alarm=[]              
+    '''  
+    print(list_Error_Flag)  
+    # output value Alarm
     # so sanh them bot gia tri
     
     print(list_Alarm_Write)
     print(list_Count_Alarm)
-    
     '''
     print(list_Alarm_Write)
     for i in range(len(list_Alarm_Write)):
@@ -219,9 +199,6 @@ def get_list_Alarm(list_data_alarm):
             Var_Flag_Clear=Var_Flag_Clear-1
             print("Loi da duoc xoa")
     '''
-
-    
-
 def Alarm(value_Alarm):
 
     '''
@@ -238,7 +215,6 @@ def Alarm(value_Alarm):
 def convert_float_int(value_float):
            value_int=int(value_float*100)/100
            return value_int
-
 while True:
     blynk.run()
     if flag_read_Weather == True:
@@ -251,10 +227,7 @@ while True:
             flag_read_Current = False
             flag_read_Weather=True
             print("Low Irradian"+str(data_Weather[0]))
-        time.sleep(1)
-            
-        
-        
+        time.sleep(1)       
 #    blynk.run()
 
 #    for x in ip_Device:
@@ -262,8 +235,7 @@ while True:
 #        a=Connect_MbTCP(x,3,1,10)
 #        print(a)
 #        print("***********************")
-#        time.sleep(5)
-    
+#        time.sleep(5)   
     if flag_read_Current == True:
         data=Connect_MbTCP("192.168.1.151",3,1,15)
         if len(data)>1:
@@ -279,8 +251,7 @@ while True:
                     list_Buffer_Start.append(list_Buffer[b][a])
                 
                 list_Buffer_Final.append(max(list_Buffer_Start))
-                list_Buffer_Start=[]
-                      
+                list_Buffer_Start=[]     
             list_Buffer=[]
             SCB01=convert_float_int(list_Buffer_Final[0])
             SCB02=convert_float_int(list_Buffer_Final[1])         
@@ -328,8 +299,6 @@ while True:
                 count_Alarm=0
         list_Data_F=[] 
         list_Buffer_Final=[]
-        
-
 def Alarm_thermal():
     if var_RH  > 80.0 and var_alarm_up == True: 
         blynk.notify('Humidity high alarm SET!')
