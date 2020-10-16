@@ -166,15 +166,14 @@ def get_list_Alarm(list_data_alarm):
     # tim so luong gia tri >80%
     list_Alarm_Buffer=[]
     # STOP HERE
-    '''
+    
     for i in range(len(list_Count_Alarm)):
-        if int(list_Count_Alarm[i])>1:
+        if int(list_Count_Alarm[i])>1: # gia tri cai dat
             var_Index_Error=list_Alarm_Write[i]
             for i in range(len(list_SCB)):
                 if var_Index_Error==list_SCB[i]:
                     list_Error_Flag[i]=1
-    list_Count_Alarm=[]              
-    '''  
+    list_Count_Alarm=[]               
     print(list_Error_Flag)  
     # output value Alarm
     # so sanh them bot gia tri
@@ -219,6 +218,8 @@ while True:
     blynk.run()
     if flag_read_Weather == True:
         data_Weather=read_weather()
+
+    
         W0=data_Weather[0]/10
         if(data_Weather[0]>4000):
             flag_read_Current = True
