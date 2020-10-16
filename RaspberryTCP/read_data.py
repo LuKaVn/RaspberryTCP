@@ -1,10 +1,4 @@
-#check GIT/ this is check data
-#check GIT/ this is check data /check
-#check GIT/ this is check data /check
-# truong dinhluu
-#check again
-#check from
-#check
+# V3 16/10/2020
 import blynklib
 from pyModbusTCP.client import ModbusClient
 from pyModbusTCP import utils
@@ -35,8 +29,11 @@ count_Alarm=0
 Var_Flag_Add=0
 Var_Flag_Clear=0
 list_SCB=["SCB01","SCB02","SCB03","SCB04","SCB05","SCB06","SCB07","SCB08","SCB09","SCB010","SCB011","SCB012","SCB013","SCB014","SCB015","SCB016"]
+on_Alarm= False
+off_Alarm=False
 # Flag -------->
 list_Error_Flag=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]# No 17 is Count error
+list_Error_Flag_Save=[]
 var_Index_Error=""
 #list_FError_Flag=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]# No 17 is Count error
 list_Alarm_Buffer=[]
@@ -170,15 +167,28 @@ def get_list_Alarm(list_data_alarm):
     if len(list_Alarm_Write)>1:
         for i in range(len(list_Count_Alarm)):
             if int(list_Count_Alarm[i])>1: # gia tri cai dat
-                var_Index_Error=list_Alarm_Write[i]#<----------------------------------------------
+                var_Index_Error=list_Alarm_Write[i]#<----------- lay gia tri name of COB to compare
                 for i in range(len(list_SCB)):
                     if var_Index_Error==list_SCB[i]:
                         list_Error_Flag[i]=1
+    if len(list_Error_Flag_Save)==0:
+        list_Error_Flag_Save=list_Error_Flag # gan gia tri vao mang
+        list_Error_Flag=[]
+    else:
+        #so sanh chuoi moi va cu
+        for i in list_Error_Flag:
+            if list_Error_Flag[i]!=list_Error_Flag_Save[i]:# khacs gia tri
+                #check la them moi hay cu
+                if list_Error_Flag[i]==0:
+                    #du lieu duoc xoa
+                    list_Error_Flag_Save[i]=0
+                    print("du lieu duoc xoa")
+                if list_Error_Flag[i]==1 # string or int ???????
+                    #du lieu duoc them
+                    list_Error_Flag_Save[i]=1
+                    print("du lieu duoc them")           
     list_Count_Alarm=[]               
     print(list_Error_Flag)  
-    # output value Alarm
-    # so sanh them bot gia tri
-    
     print(list_Alarm_Write)
     print(list_Count_Alarm)
     '''
@@ -190,28 +200,14 @@ def get_list_Alarm(list_data_alarm):
     print(list_Error_Flag)
     # flag_Add flag_Error
     '''
-    '''
-    for i in range(len(list_Error_Flag)):
-        if list_Error_Flag[i]>list_FinalError_Flag[i]:
-            Var_Flag_Add=Var_Flag_Add+1
-            print("canh bao loi")
-        if list_Error_Flag[i]<list_FinalError_Flag[i]:
-            Var_Flag_Clear=Var_Flag_Clear-1
-            print("Loi da duoc xoa")
-    '''
-def Alarm(value_Alarm):
-
-    '''
-    if value_Alarm == True and keep_Alarm==False:
+def Alarm():
+    if on_Alarm == True:
         blynk.notify(alarm_msg)
         blynk.email("cuonglbq@geccom.vn", alarm_msg , "https://shorturl.at/hDTY2")
-        value_Alarm = False
-        keep_Alarm=True
-    if value_Alarm == False:
+        on_Alarm = False
+    if off_Alarm == True:
         blynk.notify('Alarm CLEAR!')
-        keep_Alarm=False
- 
- '''
+        off_Alarm = False
 def convert_float_int(value_float):
            value_int=int(value_float*100)/100
            return value_int
