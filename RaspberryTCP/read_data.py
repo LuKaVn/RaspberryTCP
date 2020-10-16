@@ -152,6 +152,7 @@ def read_weather():
     return data
 #def find_Alarm(var_find):
 def get_list_Alarm(list_data_alarm):
+    list_Count_Alarm=[]
     list_Alarm_Buffer=[]
     count_Alarm_sub=0
     # khong cho phep them, chi ghi de
@@ -215,7 +216,7 @@ def convert_float_int(value_float):
            value_int=int(value_float*100)/100
            return value_int
 while True:
-    blynk.run()
+    #blynk.run()
     if flag_read_Weather == True:
         data_Weather=read_weather()
 
