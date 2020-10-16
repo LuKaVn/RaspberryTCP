@@ -167,13 +167,13 @@ def get_list_Alarm(list_data_alarm):
     # tim so luong gia tri >80%
     list_Alarm_Buffer=[]
     # STOP HERE
-    
-    for i in range(len(list_Count_Alarm)):
-        if int(list_Count_Alarm[i])>1: # gia tri cai dat
-            var_Index_Error=list_Alarm_Write[i]
-            for i in range(len(list_SCB)):
-                if var_Index_Error==list_SCB[i]:
-                    list_Error_Flag[i]=1
+    if len(list_Alarm_Write)>1:
+        for i in range(len(list_Count_Alarm)):
+            if int(list_Count_Alarm[i])>1: # gia tri cai dat
+                var_Index_Error=list_Alarm_Write[i]#<----------------------------------------------
+                for i in range(len(list_SCB)):
+                    if var_Index_Error==list_SCB[i]:
+                        list_Error_Flag[i]=1
     list_Count_Alarm=[]               
     print(list_Error_Flag)  
     # output value Alarm
