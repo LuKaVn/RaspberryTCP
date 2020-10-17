@@ -282,11 +282,11 @@ while True:
                     list_Alarm.append(list_SCB[list_Data_F.index(y)])
                     alarm_msg =   "Low Current at SCB No:  " + str(b)
                     var_alarm_up == True
-                    Alarm(var_alarm_up)
+                    #Alarm(var_alarm_up)
                                  
                 else:
                     var_alarm_up == False
-                    Alarm(var_alarm_up)
+                    #Alarm(var_alarm_up)
             flag_read_Weather=True
             
             if count_Alarm==2:
