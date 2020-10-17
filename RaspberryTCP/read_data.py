@@ -33,7 +33,7 @@ on_Alarm= False
 off_Alarm=False
 # Flag -------->
 list_Error_Flag=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]# No 17 is Count error
-global list_Error_Flag_Save=[]
+list_Error_Flag_Save=[]
 var_Index_Error=""
 #list_FError_Flag=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]# No 17 is Count error
 list_Alarm_Buffer=[]
@@ -171,7 +171,7 @@ def get_list_Alarm(list_data_alarm):
                 for i in range(len(list_SCB)):
                     if var_Index_Error==list_SCB[i]:
                         list_Error_Flag[i]=1
-    value_f=len(list_Error_Flag_Save)
+    value_f=len(list_Error_Flag_Save[])
     if value_f==0:
         list_Error_Flag_Save=list_Error_Flag # gan gia tri vao mang
         list_Error_Flag=[]
