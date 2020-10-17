@@ -183,7 +183,7 @@ def get_list_Alarm(list_data_alarm):
                     #du lieu duoc xoa
                     list_Error_Flag_Save[i]=0
                     print("du lieu duoc xoa")
-                if list_Error_Flag[i]==1 # string or int ???????
+                if list_Error_Flag[i]==1: # string or int ???????
                     #du lieu duoc them
                     list_Error_Flag_Save[i]=1
                     print("du lieu duoc them")           
