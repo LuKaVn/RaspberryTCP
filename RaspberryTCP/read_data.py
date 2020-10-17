@@ -171,7 +171,8 @@ def get_list_Alarm(list_data_alarm):
                 for i in range(len(list_SCB)):
                     if var_Index_Error==list_SCB[i]:
                         list_Error_Flag[i]=1
-    if len(list_Error_Flag_Save)==0:
+    value_f=len(list_Error_Flag_Save)
+    if value_f==0:
         list_Error_Flag_Save=list_Error_Flag # gan gia tri vao mang
         list_Error_Flag=[]
     else:
