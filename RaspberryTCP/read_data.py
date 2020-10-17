@@ -279,6 +279,7 @@ while True:
                 
 
                 value_f=len(get_list_Alarm(list_Alarm))
+                print(value_f)
                 if value_f==0:
                     list_Error_Flag_Save=list_Error_Flag # gan gia tri vao mang
                     list_Error_Flag=[]
