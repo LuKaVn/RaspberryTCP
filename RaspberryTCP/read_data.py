@@ -147,12 +147,12 @@ def read_virtual_pin_handler(pin) :
 def read_weather():
     data=Connect_MbTCP("192.168.1.111",4,1,1)
     return data
-    list_Error_Flag_Save=[]
 #def find_Alarm(var_find):
 def get_list_Alarm(list_data_alarm):
     list_Count_Alarm=[]
     list_Alarm_Buffer=[]
     count_Alarm_sub=0
+    list_Error_Flag=[]
     # khong cho phep them, chi ghi de
     for i in range(len(list_SCB)):
         for y in range(len(list_data_alarm)):
@@ -172,25 +172,8 @@ def get_list_Alarm(list_data_alarm):
                 for i in range(len(list_SCB)):
                     if var_Index_Error==list_SCB[i]:
                         list_Error_Flag[i]=1
-    value_f=len(list_Error_Flag_Save)
-    if value_f==0:
-        list_Error_Flag_Save=list_Error_Flag # gan gia tri vao mang
-        list_Error_Flag=[]
-    else:
-        #so sanh chuoi moi va cu
-        for i in list_Error_Flag:
-            if list_Error_Flag[i]!=list_Error_Flag_Save[i]:# khacs gia tri
-                #check la them moi hay cu
-                if list_Error_Flag[i]==0:
-                    #du lieu duoc xoa
-                    list_Error_Flag_Save[i]=0
-                    print("du lieu duoc xoa")
-                if list_Error_Flag[i]==1: # string or int ???????
-                    #du lieu duoc them
-                    list_Error_Flag_Save[i]=1
-                    print("du lieu duoc them")           
+    return list_Error_Flag
     list_Count_Alarm=[]               
-    print(list_Error_Flag)  
     print(list_Alarm_Write)
     print(list_Count_Alarm)
     '''
@@ -293,7 +276,27 @@ while True:
             
             if count_Alarm==2:
                 #print(list_Alarm)
-                get_list_Alarm(list_Alarm)
+                
+
+                value_f=len(get_list_Alarm(list_Alarm))
+                if value_f==0:
+                    list_Error_Flag_Save=list_Error_Flag # gan gia tri vao mang
+                    list_Error_Flag=[]
+                else:
+                    #so sanh chuoi moi va cu
+                    for i in list_Error_Flag:
+                        if list_Error_Flag[i]!=list_Error_Flag_Save[i]:# khacs gia tri
+                            #check la them moi hay cu
+                            if list_Error_Flag[i]==0:
+                                #du lieu duoc xoa
+                                list_Error_Flag_Save[i]=0
+                                print("du lieu duoc xoa")
+                            if list_Error_Flag[i]==1: # string or int ???????
+                                #du lieu duoc them
+                                list_Error_Flag_Save[i]=1
+                                print("du lieu duoc them")           
+
+
                 print("hello")
                 list_Alarm=[]
                 count_Alarm=0
