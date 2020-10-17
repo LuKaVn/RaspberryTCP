@@ -1,4 +1,4 @@
-# V3 16/10/2020
+#16/10/2020 v3
 import blynklib
 from pyModbusTCP.client import ModbusClient
 from pyModbusTCP import utils
@@ -276,8 +276,6 @@ while True:
             
             if count_Alarm==2:
                 #print(list_Alarm)
-                
-
                 value_f=len(get_list_Alarm(list_Alarm))
                 print(value_f)
                 if value_f==0:
@@ -296,8 +294,6 @@ while True:
                                 #du lieu duoc them
                                 list_Error_Flag_Save[i]=1
                                 print("du lieu duoc them")           
-
-
                 print("hello")
                 list_Alarm=[]
                 count_Alarm=0
@@ -308,7 +304,6 @@ def Alarm_thermal():
         blynk.notify('Humidity high alarm SET!')
         blynk.email("cuonglbq@geccom.vn", "Sensor Temperature & Humidity", "https://drive.google.com/file/d/1SzKMVdSz59slXK4rYwqK5kk_zL_PKdxi/view?usp=sharing");
         var_alarm_up = False
-
     if var_alarm_up == False and var_RH < 75.0:
         blynk.notify('Humidity high alarm CLEAR!')
         var_alarm_up = True
