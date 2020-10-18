@@ -282,6 +282,8 @@ while True:
             flag_read_Weather=True
             
             if count_Alarm==2:
+                print("list ALARM -------------")
+                '''
                 print(list_Alarm)
                 value_f=len(get_list_Alarm(list_Alarm))
                 print(value_f)
@@ -304,6 +306,7 @@ while True:
                 print("hello")
                 list_Alarm=[]
                 count_Alarm=0
+                '''
         list_Data_F=[] 
         list_Buffer_Final=[]
 def Alarm_thermal():
