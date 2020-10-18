@@ -32,8 +32,8 @@ list_SCB=["SCB01","SCB02","SCB03","SCB04","SCB05","SCB06","SCB07","SCB08","SCB09
 on_Alarm= False
 off_Alarm=False
 # Flag -------->
-list_Error_Flag=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]# No 17 is Count error
-list_Error_Flag_Save=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+list_Error_Flag=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]# No 17 is Count error
+list_Error_Flag_Save=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 list_Error_Flag_Buffer=[]
 list_Error_Flag_Final=[]
 var_Index_Error=""
