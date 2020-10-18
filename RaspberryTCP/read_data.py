@@ -36,7 +36,6 @@ list_Error_Flag=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]# No 17 is Count error
 ist_Error_Flag_Save=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 list_Error_Flag_Buffer=[]
 list_Error_Flag_Final=[]
-list_Error_Flag_Save=[]
 var_Index_Error=""
 #list_FError_Flag=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]# No 17 is Count error
 list_Alarm_Buffer=[]
@@ -177,7 +176,7 @@ def get_list_Alarm(list_data_alarm): #phan tich list su co nhan duoc
         for i in range(len(list_Count_Alarm)):
             if int(list_Count_Alarm[i])>1: # gia tri cai dat
                 var_Index_Error=list_Alarm_Write[i]#<----------- lay gia tri name of COB to compare
-                print(var_Index_Error)
+                #print(var_Index_Error)
                 for y in range(len(list_SCB)):
                     if var_Index_Error==list_SCB[y]:
                         list_Error_Flag[y]=1
