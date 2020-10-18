@@ -32,7 +32,7 @@ list_SCB=["SCB01","SCB02","SCB03","SCB04","SCB05","SCB06","SCB07","SCB08","SCB09
 on_Alarm= False
 off_Alarm=False
 # Flag -------->
-list_Error_Flag=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]# No 17 is Count error
+#list_Error_Flag=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]# No 17 is Count error
 list_Error_Flag_Save=[]
 var_Index_Error=""
 #list_FError_Flag=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]# No 17 is Count error
@@ -149,7 +149,7 @@ def read_weather():
     return data
 #def find_Alarm(var_find):
 def get_list_Alarm(list_data_alarm): #phan tich list su co nhan duoc
-    list_Error_Flag=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    list_Error_Flag=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1]
     list_Count_Alarm=[]
     list_Alarm_Buffer=[]
     count_Alarm_sub=0
