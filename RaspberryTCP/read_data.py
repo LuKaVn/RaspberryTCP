@@ -204,6 +204,7 @@ def convert_float_int(value_float):
            value_int=int(value_float*100)/100
            return value_int
 while True:
+    list_Alarm=[]
     #blynk.run()
     if flag_read_Weather == True:
         data_Weather=read_weather()
@@ -306,7 +307,7 @@ while True:
                     
                 print("hello")
                 list_Alarm=[]
-                count_Alarm=0
+            count_Alarm=0
                 
         list_Data_F=[] 
         list_Buffer_Final=[]
