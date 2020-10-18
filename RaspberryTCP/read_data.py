@@ -315,7 +315,7 @@ while True:
                                 list_Error_Flag_Save[i]=1
                                 name_SCB_add=str(list_SCB[i])
                                 print("du lieu duoc them "+name_SCB_add)
-                                alarm_msg= "du lieu duoc xoa "+ name_SCB_add    
+                                alarm_msg= "du lieu duoc Them "+ name_SCB_add    
                                 
                                 Alarm(True,False)
                 list_Alarm=[]
