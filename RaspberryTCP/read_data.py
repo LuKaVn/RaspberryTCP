@@ -199,7 +199,7 @@ def get_list_Alarm(list_data_alarm): #phan tich list su co nhan duoc
     print(list_Error_Flag)
     # flag_Add flag_Error
     '''
-def Alarm():
+def Alarm(on_Alarm,off_Alarm):
     if on_Alarm == True:
         blynk.notify(alarm_msg)
         blynk.email("cuonglbq@geccom.vn", alarm_msg , "https://shorturl.at/hDTY2")
@@ -308,16 +308,16 @@ while True:
                                 name_SCB_clear=str(list_SCB[i])
                                 print("du lieu duoc xoa "+ name_SCB_clear)
                                 alarm_msg= "du lieu duoc xoa "+ name_SCB_clear
-                                off_Alarm=True
-                                Alarm()
+                    
+                                Alarm(False,True)
                             if list_Error_Flag_Buffer[i]==1: # string or int ???????
                                 #du lieu duoc them
                                 list_Error_Flag_Save[i]=1
                                 name_SCB_add=str(list_SCB[i])
                                 print("du lieu duoc them "+name_SCB_add)
                                 alarm_msg= "du lieu duoc xoa "+ name_SCB_add    
-                                on_Alarm=True  
-                                Alarm()
+                                
+                                Alarm(True,False)
                 list_Alarm=[]
                 count_Alarm=0
                 print("-----------------------------------")
