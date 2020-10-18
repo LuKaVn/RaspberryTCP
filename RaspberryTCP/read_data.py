@@ -33,7 +33,7 @@ on_Alarm= False
 off_Alarm=False
 # Flag -------->
 list_Error_Flag=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]# No 17 is Count error
-ist_Error_Flag_Save=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+list_Error_Flag_Save=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 list_Error_Flag_Buffer=[]
 list_Error_Flag_Final=[]
 var_Index_Error=""
