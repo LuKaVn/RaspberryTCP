@@ -296,12 +296,12 @@ while True:
                 value_f=len(list_Error_Flag_Save)
                 print(value_f)
                 if value_f==0:
-                    list_Error_Flag_Save=list_Error_Flag # gan gia tri vao mang
-                    list_Error_Flag=[]
+                    list_Error_Flag_Save=list_Error_Flag_Buffer # gan gia tri vao mang
+                    list_Error_Flag_Buffer=[]
                 else:
                     #so sanh chuoi moi va cu
                     for i in list_Error_Flag_Buffer:
-                        if list_Error_Flag[i]!=list_Error_Flag_Save[i]:# khacs gia tri
+                        if list_Error_Flag_Buffer[i]!=list_Error_Flag_Save[i]:# khacs gia tri
                             #check la them moi hay cu
                             if list_Error_Flag_Buffer[i]==0:
                                 #du lieu duoc xoa
