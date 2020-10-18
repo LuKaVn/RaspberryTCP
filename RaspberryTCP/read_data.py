@@ -173,10 +173,12 @@ def get_list_Alarm(list_data_alarm): #phan tich list su co nhan duoc
         for i in range(len(list_Count_Alarm)):
             if int(list_Count_Alarm[i])>1: # gia tri cai dat
                 var_Index_Error=list_Alarm_Write[i]#<----------- lay gia tri name of COB to compare
+                print(var_Index_Error)
                 for y in range(len(list_SCB)):
                     if var_Index_Error==list_SCB[y]:
                         list_Error_Flag[y]=1
-    
+            else: 
+                print("khong lay duoc gia tri")
     print(list_Error_Flag)
     return list_Error_Flag
     
