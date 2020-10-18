@@ -283,7 +283,6 @@ while True:
             
             if count_Alarm==2:
                 print("list ALARM -------------")
-                
                 print(list_Alarm)
                 '''
                 value_f=len(get_list_Alarm(list_Alarm))
@@ -303,11 +302,12 @@ while True:
                             if list_Error_Flag[i]==1: # string or int ???????
                                 #du lieu duoc them
                                 list_Error_Flag_Save[i]=1
-                                print("du lieu duoc them")           
+                                print("du lieu duoc them")      
+                '''     
                 print("hello")
                 list_Alarm=[]
                 count_Alarm=0
-                '''
+                
         list_Data_F=[] 
         list_Buffer_Final=[]
 def Alarm_thermal():
