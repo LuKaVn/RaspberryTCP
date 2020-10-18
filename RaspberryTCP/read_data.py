@@ -179,7 +179,8 @@ def get_list_Alarm(list_data_alarm): #phan tich list su co nhan duoc
                 for y in range(len(list_SCB)):
                     if var_Index_Error==list_SCB[y]:
                         print(list_SCB[y])
-                        list_Error_Flag[y]=1
+                        #list_Error_Flag[y]=1
+    print("list Error")
     print(list_Error_Flag)
     return list_Error_Flag
     
