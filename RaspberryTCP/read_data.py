@@ -32,7 +32,8 @@ list_SCB=["SCB01","SCB02","SCB03","SCB04","SCB05","SCB06","SCB07","SCB08","SCB09
 on_Alarm= False
 off_Alarm=False
 # Flag -------->
-list_Error_Flag=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1]# No 17 is Count error
+list_Error_Flag=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]# No 17 is Count error
+ist_Error_Flag_Save=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 list_Error_Flag_Buffer=[]
 list_Error_Flag_Final=[]
 list_Error_Flag_Save=[]
@@ -308,17 +309,19 @@ while True:
                                 #du lieu duoc xoa
                                 list_Error_Flag_Save[i]=0
                                 name_SCB_clear=str(list_SCB[i])
-                                print("du lieu duoc xoa"+name_SCB_clear)
+                                print("du lieu duoc xoa "+name_SCB_clear)
                             if list_Error_Flag_Buffer[i]==1: # string or int ???????
                                 #du lieu duoc them
                                 list_Error_Flag_Save[i]=1
                                 name_SCB_add=str(list_SCB[i])
-                                print("du lieu duoc them"+name_SCB_add)      
+                                print("du lieu duoc them "+name_SCB_add)      
                 list_Alarm=[]
                 count_Alarm=0
+                print("-----------------------------------")
+            
         list_Data_F=[] 
         list_Buffer_Final=[]
-        print("-----------------------------------")
+        
 def Alarm_thermal():
     if var_RH  > 80.0 and var_alarm_up == True: 
         blynk.notify('Humidity high alarm SET!')
