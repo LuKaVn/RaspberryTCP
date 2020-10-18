@@ -302,7 +302,7 @@ while True:
                 else:
                     print("dua du lieu thu 2 vao mang")
                     #so sanh chuoi moi va cu
-                    for i in len(range(list_Error_Flag_Buffer)):
+                    for i in range(len(list_Error_Flag_Buffer)):
                         if list_Error_Flag_Buffer[i]!=list_Error_Flag_Save[i]:# khacs gia tri
                             #check la them moi hay cu
                             if list_Error_Flag_Buffer[i]==0:
