@@ -151,7 +151,7 @@ def read_weather():
     return data
 #def find_Alarm(var_find):
 def get_list_Alarm(list_data_alarm): #phan tich list su co nhan duoc
-    list_Error_Flag=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1]
+    list_Error_Flag=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     list_Count_Alarm=[]
     list_Alarm_Buffer=[]
     count_Alarm_sub=0
@@ -297,9 +297,9 @@ while True:
                 if value_f==0:
                     list_Error_Flag_Save=list_Error_Flag_Buffer # gan gia tri vao mang
                     list_Error_Flag_Buffer=[]
-                    print("bat dau dua du lieu vao")
+                    
                 else:
-                    print("dua du lieu thu 2 vao mang")
+                
                     #so sanh chuoi moi va cu
                     for i in range(len(list_Error_Flag_Buffer)):
                         if list_Error_Flag_Buffer[i]!=list_Error_Flag_Save[i]:# khacs gia tri
