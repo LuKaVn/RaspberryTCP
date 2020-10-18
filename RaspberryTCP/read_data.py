@@ -33,6 +33,8 @@ on_Alarm= False
 off_Alarm=False
 # Flag -------->
 list_Error_Flag=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1]# No 17 is Count error
+list_Error_Flag_Buffer=[]
+list_Error_Flag_Final=[]
 list_Error_Flag_Save=[]
 var_Index_Error=""
 #list_FError_Flag=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]# No 17 is Count error
@@ -290,22 +292,22 @@ while True:
             if count_Alarm==2:
                 print("list ALARM -------------")
                 print(list_Alarm)
-                
-                value_f=len(get_list_Alarm(list_Alarm))
+                list_Error_Flag_Buffer=get_list_Alarm(list_Alarm)
+                value_f=len(list_Error_Flag_Save)
                 print(value_f)
                 if value_f==0:
                     list_Error_Flag_Save=list_Error_Flag # gan gia tri vao mang
                     list_Error_Flag=[]
                 else:
                     #so sanh chuoi moi va cu
-                    for i in list_Error_Flag:
+                    for i in list_Error_Flag_Buffer:
                         if list_Error_Flag[i]!=list_Error_Flag_Save[i]:# khacs gia tri
                             #check la them moi hay cu
-                            if list_Error_Flag[i]==0:
+                            if list_Error_Flag_Buffer[i]==0:
                                 #du lieu duoc xoa
                                 list_Error_Flag_Save[i]=0
                                 print("du lieu duoc xoa")
-                            if list_Error_Flag[i]==1: # string or int ???????
+                            if list_Error_Flag_Buffer[i]==1: # string or int ???????
                                 #du lieu duoc them
                                 list_Error_Flag_Save[i]=1
                                 print("du lieu duoc them")      
@@ -313,7 +315,6 @@ while True:
                 print("hello")
                 list_Alarm=[]
                 count_Alarm=0
-                
         list_Data_F=[] 
         list_Buffer_Final=[]
 def Alarm_thermal():
