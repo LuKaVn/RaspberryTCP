@@ -166,8 +166,9 @@ def get_list_Alarm(list_data_alarm): #phan tich list su co nhan duoc
     print("in list loi")
     print(list_Alarm_Buffer)
     print(list_Count_Alarm)
-    list_Alarm_Buffer=[]
+    
     list_Alarm_Write=list_Alarm_Buffer
+    list_Alarm_Buffer=[]
     # STOP HERE
     if len(list_Alarm_Write)>1:
         for i in range(len(list_Count_Alarm)):
