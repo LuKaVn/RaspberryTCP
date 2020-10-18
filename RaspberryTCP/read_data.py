@@ -148,7 +148,7 @@ def read_weather():
     data=Connect_MbTCP("192.168.1.111",4,1,1)
     return data
 #def find_Alarm(var_find):
-def get_list_Alarm(list_data_alarm):
+def get_list_Alarm(list_data_alarm): #phan tich list su co nhan duoc
     list_Count_Alarm=[]
     list_Alarm_Buffer=[]
     count_Alarm_sub=0
@@ -163,6 +163,9 @@ def get_list_Alarm(list_data_alarm):
             list_Count_Alarm.append(str(count_Alarm_sub))
             count_Alarm_sub=0     
     # tim so luong gia tri >80%
+    print("in list loi")
+    print(list_Alarm_Buffer)
+    print(list_Count_Alarm)
     list_Alarm_Buffer=[]
     # STOP HERE
     if len(list_Alarm_Write)>1:
