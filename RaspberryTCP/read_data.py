@@ -281,10 +281,10 @@ while True:
                     #Alarm(var_alarm_up)
             flag_read_Weather=True
             
-            if count_Alarm==2:
+            if count_Alarm==2 and len(list_Alarm)>0:
                 print("list ALARM -------------")
                 print(list_Alarm)
-                '''
+                
                 value_f=len(get_list_Alarm(list_Alarm))
                 print(value_f)
                 if value_f==0:
@@ -303,7 +303,7 @@ while True:
                                 #du lieu duoc them
                                 list_Error_Flag_Save[i]=1
                                 print("du lieu duoc them")      
-                '''     
+                    
                 print("hello")
                 list_Alarm=[]
                 count_Alarm=0
