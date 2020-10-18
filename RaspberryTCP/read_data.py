@@ -153,7 +153,6 @@ def get_list_Alarm(list_data_alarm): #phan tich list su co nhan duoc
     list_Count_Alarm=[]
     list_Alarm_Buffer=[]
     count_Alarm_sub=0
-    list_Error_Flag=[]
     # khong cho phep them, chi ghi de
     for i in range(len(list_SCB)):
         for y in range(len(list_data_alarm)):
@@ -183,6 +182,7 @@ def get_list_Alarm(list_data_alarm): #phan tich list su co nhan duoc
     print("list Error")
     print(list_Error_Flag)
     return list_Error_Flag
+    list_Error_Flag=[]
     
     '''
     list_Count_Alarm=[]               
