@@ -282,7 +282,7 @@ while True:
                     #Alarm(var_alarm_up)
             flag_read_Weather=True
             
-            if count_Alarm==2 and len(list_Alarm)>0:
+            if count_Alarm==2:
                 print("list ALARM -------------")
                 print(list_Alarm)
                 
@@ -307,7 +307,7 @@ while True:
                     
                 print("hello")
                 list_Alarm=[]
-            count_Alarm=0
+                count_Alarm=0
                 
         list_Data_F=[] 
         list_Buffer_Final=[]
