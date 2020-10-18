@@ -283,8 +283,9 @@ while True:
             
             if count_Alarm==2:
                 print("list ALARM -------------")
-                '''
+                
                 print(list_Alarm)
+                '''
                 value_f=len(get_list_Alarm(list_Alarm))
                 print(value_f)
                 if value_f==0:
