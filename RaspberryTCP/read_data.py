@@ -179,7 +179,6 @@ def get_list_Alarm(list_data_alarm): #phan tich list su co nhan duoc
                 print(var_Index_Error)
                 for y in range(len(list_SCB)):
                     if var_Index_Error==list_SCB[y]:
-                        print(list_SCB[y])
                         list_Error_Flag[y]=1
     print("list Error")
     print(list_Error_Flag)
@@ -308,17 +307,18 @@ while True:
                             if list_Error_Flag_Buffer[i]==0:
                                 #du lieu duoc xoa
                                 list_Error_Flag_Save[i]=0
-                                print("du lieu duoc xoa")
+                                name_SCB_clear=str(list_SCB[i])
+                                print("du lieu duoc xoa"+name_SCB_clear)
                             if list_Error_Flag_Buffer[i]==1: # string or int ???????
                                 #du lieu duoc them
                                 list_Error_Flag_Save[i]=1
-                                print("du lieu duoc them")      
-                    
-                print("hello")
+                                name_SCB_add=str(list_SCB[i])
+                                print("du lieu duoc them"+name_SCB_add)      
                 list_Alarm=[]
                 count_Alarm=0
         list_Data_F=[] 
         list_Buffer_Final=[]
+        print("-----------------------------------")
 def Alarm_thermal():
     if var_RH  > 80.0 and var_alarm_up == True: 
         blynk.notify('Humidity high alarm SET!')
