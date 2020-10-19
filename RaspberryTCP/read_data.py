@@ -306,7 +306,7 @@ while True:
                                 list_Error_Flag_Save[i]=0
                                 name_SCB_clear=str(list_SCB[i])
                                 print("du lieu duoc xoa "+ name_SCB_clear)
-                                alarm_msg= "Clear_F "+ name_SCB_clear
+                                alarm_msg= "Lỗi "+ name_SCB_clear+" được xóa."
                     
                                 Alarm(False,True)
                             if list_Error_Flag_Buffer[i]==1: # string or int ???????
@@ -314,7 +314,7 @@ while True:
                                 list_Error_Flag_Save[i]=1
                                 name_SCB_add=str(list_SCB[i])
                                 print("du lieu duoc them "+name_SCB_add)
-                                alarm_msg= "Add_F "+ name_SCB_add    
+                                alarm_msg= "Kiểm tra  "+ name_SCB_add    
                                 
                                 Alarm(True,False)
                 list_Alarm=[]
