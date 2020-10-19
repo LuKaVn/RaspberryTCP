@@ -174,7 +174,7 @@ def get_list_Alarm(list_data_alarm): #phan tich list su co nhan duoc
     # STOP HERE
     if len(list_Alarm_Write)>1:
         for i in range(len(list_Count_Alarm)):
-            if int(list_Count_Alarm[i])>8: # gia tri cai dat
+            if int(list_Count_Alarm[i])>16: # gia tri cai dat
                 var_Index_Error=list_Alarm_Write[i]#<----------- lay gia tri name of COB to compare
                 #print(var_Index_Error)
                 for y in range(len(list_SCB)):
@@ -202,7 +202,7 @@ def get_list_Alarm(list_data_alarm): #phan tich list su co nhan duoc
 def Alarm(on_Alarm,off_Alarm):
     if on_Alarm == True:
         blynk.notify(alarm_msg)
-        blynk.email("cuonglbq@geccom.vn", alarm_msg , "https://shorturl.at/hDTY2")
+        blynk.email("cuonglbq@geccom.vn", alarm_msg , "https://www.dropbox.com/s/qcz2n4awpasmeaz/QLVH.HD_06.pdf?dl=0")
         on_Alarm = False
     if off_Alarm == True:
         blynk.notify('Alarm CLEAR!'+ alarm_msg)
@@ -244,7 +244,6 @@ while True:
             for a in range(int(count_len_Subbuff)):
                 for b in range(count_len_Buff):
                     list_Buffer_Start.append(list_Buffer[b][a])
-                
                 list_Buffer_Final.append(max(list_Buffer_Start))
                 list_Buffer_Start=[]     
             list_Buffer=[]
@@ -286,7 +285,7 @@ while True:
                     #Alarm(var_alarm_up)
             flag_read_Weather=True
             
-            if count_Alarm==10:
+            if count_Alarm==20:
                 print("list ALARM -------------")
                 print(list_Alarm)
                 list_Error_Flag_Buffer=get_list_Alarm(list_Alarm)
@@ -307,7 +306,7 @@ while True:
                                 list_Error_Flag_Save[i]=0
                                 name_SCB_clear=str(list_SCB[i])
                                 print("du lieu duoc xoa "+ name_SCB_clear)
-                                alarm_msg= "du lieu duoc xoa "+ name_SCB_clear
+                                alarm_msg= "Clear_F "+ name_SCB_clear
                     
                                 Alarm(False,True)
                             if list_Error_Flag_Buffer[i]==1: # string or int ???????
@@ -315,7 +314,7 @@ while True:
                                 list_Error_Flag_Save[i]=1
                                 name_SCB_add=str(list_SCB[i])
                                 print("du lieu duoc them "+name_SCB_add)
-                                alarm_msg= "du lieu duoc Them "+ name_SCB_add    
+                                alarm_msg= "Add_F "+ name_SCB_add    
                                 
                                 Alarm(True,False)
                 list_Alarm=[]
