@@ -143,12 +143,6 @@ def read_virtual_pin_handler(pin) :
 @blynk.handle_event('read V15')
 def read_virtual_pin_handler(pin) :
     blynk.virtual_write(pin, SCB15)
-@blynk.handle_event('read V17')
-def read_virtual_pin_handler(pin) :
-    blynk.virtual_write(pin,"Kiểm tra")
-@blynk.handle_event('read V18')
-def read_virtual_pin_handler(pin) :
-    blynk.virtual_write(pin, List_Check)
 ###########################################################
 # infinite loop that waits for event
 ###########################################################
@@ -320,7 +314,7 @@ while True:
                                 list_Error_Flag_Save[i]=1
                                 name_SCB_add=str(list_SCB[i])
                                 print("du lieu duoc them "+name_SCB_add)
-                                alarm_msg= "Kiểm tra  "+ name_SCB_add    
+                                alarm_msg= "Đức Huệ 1 - IVT1.1  "+ name_SCB_add+ " - Dòng điện thấp"    
                                 
                                 Alarm(True,False)
                     List_Check=""
