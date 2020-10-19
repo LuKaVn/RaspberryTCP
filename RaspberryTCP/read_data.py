@@ -43,6 +43,8 @@ list_Alarm_Write=[]
 list_Alarm_Save=[]
 count_Alarm=0
 list_Count_Alarm=[]
+var_Alarm_call=0
+var_Alarm_clear=0
 """
 ip_Device=["192.168.1.151","192.168.1.152","192.168.1.153","192.168.1.154","192.168.1.155","192.168.1.156",
            "192.168.1.157","192.168.1.158","192.168.1.159","192.168.1.160","192.168.1.161","192.168.1.162",
@@ -304,19 +306,29 @@ while True:
                             if list_Error_Flag_Buffer[i]==0:
                                 #du lieu duoc xoa
                                 list_Error_Flag_Save[i]=0
-                                name_SCB_clear=str(list_SCB[i])
+                                name_SCB_clear+=str(list_SCB[i])
                                 print("du lieu duoc xoa "+ name_SCB_clear)
-                                alarm_msg= "Lỗi "+ name_SCB_clear+" được xóa."
-                    
-                                Alarm(False,True)
+                               
+                                var_Alarm_clear=1
+                                
                             if list_Error_Flag_Buffer[i]==1: # string or int ???????
                                 #du lieu duoc them
                                 list_Error_Flag_Save[i]=1
-                                name_SCB_add=str(list_SCB[i])
+                                name_SCB_add+=str(list_SCB[i])
                                 print("du lieu duoc them "+name_SCB_add)
-                                alarm_msg= "Đức Huệ 1 - IVT1.1  "+ name_SCB_add+ " - Dòng điện thấp"    
-                                
-                                Alarm(True,False)
+                                   
+                                var_Alarm_call=1
+                    if var_Alarm_call==1:
+                        alarm_msg= "Đức Huệ 1 - IVT1.1  "+ name_SCB_add+ " - Dòng điện thấp" 
+                        Alarm(True,False)
+                        var_Alarm_call=0          
+                        name_SCB_add=""    
+                    if var_Alarm_clear==1:
+                        alarm_msg= "Lỗi "+ name_SCB_clear+" được xóa."
+                        Alarm(False,True)
+                        var_Alarm_clear=0
+                        name_SCB_clear=""
+                        
                     List_Check=""
                     for i in list_Error_Flag_Final:
                         List_Check+=i
