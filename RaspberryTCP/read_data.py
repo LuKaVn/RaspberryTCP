@@ -222,7 +222,7 @@ while True:
 
     
         W0=data_Weather[0]/10
-        if(data_Weather[0]>4000):
+        if(data_Weather[0]>5000):
             flag_read_Current = True
         else:
             flag_read_Current = False
@@ -322,7 +322,7 @@ while True:
                                    
                                 var_Alarm_call=1
                     if var_Alarm_call==1:
-                        alarm_msg= "Đức Huệ 1 - IVT1.1  "+ name_SCB_add+ " - Dòng điện thấp" 
+                        alarm_msg= "Đức Huệ 1 - IVT1.1  "+ name_SCB_add+ " - Low performance" 
                         Alarm(True,False)
                         var_Alarm_call=0          
                         name_SCB_add=""    
