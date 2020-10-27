@@ -351,3 +351,4 @@ def Alarm_thermal():
     if var_alarm_up == False and var_RH < 75.0:
         blynk.notify('Humidity high alarm CLEAR!')
         var_alarm_up = True
+#2020
